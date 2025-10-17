@@ -280,6 +280,50 @@
             font-size: 1.1rem;
         }
 
+        .detail-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .detail-section li {
+            color: #b0b0b0;
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .detail-section li::before {
+            content: '✓';
+            color: #8a2be2;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .use-case {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(138, 43, 226, 0.1);
+        }
+
+        .use-case h4 {
+            color: #8a2be2;
+            margin-bottom: 0.5rem;
+        }
+
+        .use-case p {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+        }
+
         .cta-section {
             text-align: center;
             padding: 3rem;
@@ -379,6 +423,43 @@
                         { icon: '🎨', title: 'Multiple Result Actions', desc: 'Select All, Highlight, or Filter View - choose the best action.' },
                         { icon: '🚀', title: 'High Performance', desc: 'Searches 1000+ objects in milliseconds. Zero performance impact.' }
                     ],
+                    keyFeatures: [
+                        'Visual query builder with dropdown filters',
+                        '6 filter types: Name, Tag, Layer, Component, Static, Active',
+                        'Component field value filtering with 6 comparison operators',
+                        'Logical operators (AND, OR, NOT)',
+                        '4 result actions (Select All, Select Inverse, Highlight, Filter View)',
+                        'Preset system with ScriptableObject storage',
+                        'Context menu integration',
+                        'Keyboard shortcuts (Ctrl+H)',
+                        'Auto-complete component search',
+                        'Full source code included',
+                        'Comprehensive documentation'
+                    ],
+                    useCases: [
+                        { title: 'Level Design', desc: 'Find all trigger colliders, lights on specific layers, disabled spawn points' },
+                        { title: 'Debugging', desc: 'Locate inactive objects, find objects with specific component states' },
+                        { title: 'Optimization', desc: 'Find all rigidbodies, heavy renderers, batch process objects' },
+                        { title: 'Cleanup', desc: 'Find unnamed objects, untagged objects, test objects for deletion' }
+                    ],
+                    included: [
+                        'Complete source code (C#)',
+                        'Editor window with visual query builder',
+                        'Hierarchy highlighting system',
+                        'Filter view system with HideFlags',
+                        'Preset management system',
+                        'Context menu integration',
+                        'Comprehensive documentation',
+                        'Example presets',
+                        'Full support'
+                    ],
+                    technical: [
+                        'Unity Version: 2020.3 or higher',
+                        'Platform: Editor only (no runtime components)',
+                        'Dependencies: None - pure C# Unity Editor API',
+                        'Integration: Zero setup, works immediately after import',
+                        'Compatible with Mono and IL2CPP'
+                    ],
                     cta: {
                         title: 'Ready to supercharge your Unity workflow?',
                         subtitle: 'One-time purchase. Unlimited projects. Lifetime updates.'
@@ -402,6 +483,45 @@
                         { icon: '🔎', title: 'Smart Search', desc: 'Filter issues: missing:Sprite, component:AudioSource, severity:critical.' },
                         { icon: '📦', title: 'Batch Operations', desc: 'Fix multiple objects at once. Apply fixes in bulk.' },
                         { icon: '⚡', title: 'High Performance', desc: 'Scans 1,000 objects in under 1 second. Minimal memory footprint.' }
+                    ],
+                    keyFeatures: [
+                        'Real-time automatic detection of missing references',
+                        'Visual hierarchy integration with warning icons',
+                        'Smart fix suggestions with confidence scores',
+                        'Missing script detective with GUID tracking',
+                        'Advanced search filters (missing:, component:, severity:)',
+                        'Batch operations for multiple objects',
+                        'Export reports in Markdown, Plain Text, and CSV',
+                        'Context menu integration',
+                        'Customizable settings panel',
+                        'Full undo support',
+                        'Comprehensive documentation'
+                    ],
+                    useCases: [
+                        { title: 'Scene Cleanup', desc: 'Quickly identify and fix all broken references in large scenes' },
+                        { title: 'Prefab Maintenance', desc: 'Detect missing references in prefab hierarchies' },
+                        { title: 'Team Collaboration', desc: 'Export reports for team members to review and fix' },
+                        { title: 'Project Migration', desc: 'Find broken references after upgrading Unity or packages' }
+                    ],
+                    included: [
+                        'Complete detection engine with real-time scanning',
+                        'Smart fix suggestion system',
+                        'Missing script detective tool',
+                        'Batch operation support',
+                        'Advanced search and filtering',
+                        'Report generator (3 formats)',
+                        'Hierarchy visual integration',
+                        'Context menu extensions',
+                        'Full source code',
+                        'Comprehensive documentation'
+                    ],
+                    technical: [
+                        'Unity Version: 2020.3 or higher',
+                        'Platform: Editor only',
+                        'Performance: 1,000 objects scanned in <1 second',
+                        'Memory: <10MB footprint',
+                        'Dependencies: None',
+                        'Integration: Zero setup required'
                     ],
                     cta: {
                         title: 'Stop wasting time hunting for broken references',
@@ -470,7 +590,7 @@
                 </div>
 
                 <div class="detail-section">
-                    <h3>Overview</h3>
+                    <h3>Why ${product.name}?</h3>
                     <p>${product.details.intro}</p>
                 </div>
 
@@ -481,6 +601,39 @@
                             <p>${f.desc}</p>
                         </div>
                     `).join('')}
+                </div>
+
+                <div class="detail-section">
+                    <h3>Key Features</h3>
+                    <ul>
+                        ${product.details.keyFeatures.map(f => `<li>${f}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Use Cases</h3>
+                    <div class="use-cases-grid">
+                        ${product.details.useCases.map(uc => `
+                            <div class="use-case">
+                                <h4>${uc.title}</h4>
+                                <p>${uc.desc}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h3>What's Included</h3>
+                    <ul>
+                        ${product.details.included.map(i => `<li>${i}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Technical Requirements</h3>
+                    <ul>
+                        ${product.details.technical.map(t => `<li>${t}</li>`).join('')}
+                    </ul>
                 </div>
 
                 <div class="cta-section">
