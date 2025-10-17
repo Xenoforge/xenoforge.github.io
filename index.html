@@ -126,6 +126,12 @@
             font-size: 4rem;
             margin-bottom: 1.5rem;
             display: block;
+            /* Support for both emoji and images */
+            max-width: 120px;
+            max-height: 120px;
+            object-fit: contain;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .product-card h3 {
@@ -408,7 +414,7 @@
             {
                 id: 'smartsearch',
                 name: 'Smart Search',
-                icon: 'images/smartsearch.png',
+                icon: '🔍',
                 tagline: 'Advanced Hierarchy Filtering for Unity',
                 description: 'Transform Unity\'s basic hierarchy search into a powerful filtering system with visual query builder, logical operators, and instant results.',
                 badges: ['Editor Tool', 'Productivity', 'Unity 2020.3+'],
@@ -549,10 +555,14 @@
             const card = document.createElement('div');
             card.className = 'product-card';
             card.onclick = () => openModal(product);
-            card.innerHTML = `${product.icon.includes('.') || product.icon.includes('/') 
-        ? `<img src="${product.icon}" class="product-icon" alt="${product.name}" style="width: 120px; height: 120px; object-fit: contain;">` 
-        : `<span class="product-icon">${product.icon}</span>`
-    }
+            
+            // Check if icon is image or emoji
+            const iconHTML = (product.icon.includes('.') || product.icon.includes('/')) 
+                ? `<img src="${product.icon}" class="product-icon" alt="${product.name}">` 
+                : `<span class="product-icon">${product.icon}</span>`;
+            
+            card.innerHTML = `
+                ${iconHTML}
                 <h3>${product.name}</h3>
                 <p class="tagline">${product.tagline}</p>
                 <p style="color: #b0b0b0; margin-bottom: 1rem;">${product.description}</p>
@@ -566,6 +576,7 @@
         const comingSoon = document.createElement('div');
         comingSoon.className = 'product-card';
         comingSoon.style.opacity = '0.5';
+        comingSoon.style.cursor = 'not-allowed';
         comingSoon.innerHTML = `
             <span class="product-icon">🎮</span>
             <h3>Coming Soon</h3>
@@ -580,9 +591,14 @@
             const modal = document.getElementById('modal');
             const modalBody = document.getElementById('modal-body');
             
+            // Check if icon is image or emoji
+            const iconHTML = (product.icon.includes('.') || product.icon.includes('/')) 
+                ? `<img src="${product.icon}" class="product-icon" alt="${product.name}" style="width: 150px; height: 150px;">` 
+                : `<span class="product-icon">${product.icon}</span>`;
+            
             modalBody.innerHTML = `
                 <div class="detail-hero">
-                    <span class="product-icon">${product.icon}</span>
+                    ${iconHTML}
                     <h2>${product.name}</h2>
                     <p class="tagline">${product.tagline}</p>
                     <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
