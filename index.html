@@ -550,7 +550,11 @@
             card.className = 'product-card';
             card.onclick = () => openModal(product);
             card.innerHTML = `
-                <span class="product-icon">${product.icon}</span>
+                card.innerHTML = `
+    ${product.icon.includes('.') || product.icon.includes('/') 
+        ? `<img src="${product.icon}" class="product-icon" alt="${product.name}" style="width: 120px; height: 120px; object-fit: contain;">` 
+        : `<span class="product-icon">${product.icon}</span>`
+    }
                 <h3>${product.name}</h3>
                 <p class="tagline">${product.tagline}</p>
                 <p style="color: #b0b0b0; margin-bottom: 1rem;">${product.description}</p>
