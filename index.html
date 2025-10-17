@@ -18,7 +18,6 @@
             overflow-x: hidden;
         }
 
-        /* Header */
         header {
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
@@ -66,39 +65,11 @@
             color: #8a2be2;
         }
 
-        /* Hero Section */
         .hero {
             margin-top: 80px;
             padding: 6rem 2rem 4rem;
             text-align: center;
             background: linear-gradient(180deg, rgba(138, 43, 226, 0.1) 0%, transparent 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(65, 105, 225, 0.15) 0%, transparent 50%);
-            animation: pulse 8s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
         }
 
         h1 {
@@ -108,28 +79,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .subtitle {
             font-size: 1.5rem;
             color: #b0b0b0;
             margin-bottom: 2rem;
-            animation: fadeInUp 1s ease-out 0.2s both;
         }
 
-        /* Products Section */
         .products {
             padding: 4rem 2rem 6rem;
             max-width: 1400px;
@@ -157,30 +114,12 @@
             border: 1px solid rgba(138, 43, 226, 0.2);
             transition: all 0.3s;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #8a2be2, #4169e1);
-            transform: scaleX(0);
-            transition: transform 0.3s;
         }
 
         .product-card:hover {
             transform: translateY(-10px);
             border-color: rgba(138, 43, 226, 0.5);
             box-shadow: 0 20px 40px rgba(138, 43, 226, 0.3);
-        }
-
-        .product-card:hover::before {
-            transform: scaleX(1);
         }
 
         .product-icon {
@@ -199,20 +138,6 @@
             color: #8a2be2;
             font-weight: 600;
             margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .product-card p {
-            color: #b0b0b0;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .product-badges {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
         }
 
         .badge {
@@ -221,14 +146,9 @@
             padding: 0.4rem 0.8rem;
             border-radius: 20px;
             font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .product-price {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #8a2be2;
-            margin-bottom: 1rem;
+            margin-right: 0.5rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
         }
 
         .btn {
@@ -238,167 +158,12 @@
             font-size: 1rem;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-            width: 100%;
-            text-align: center;
-        }
-
-        .btn-primary {
             background: linear-gradient(135deg, #8a2be2, #4169e1);
             color: white;
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.6);
-        }
-
-        /* Product Detail Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            overflow-y: auto;
-            animation: fadeIn 0.3s;
+            margin-top: 1rem;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal.active {
-            display: block;
-        }
-
-        .modal-content {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 2rem;
-            position: relative;
-        }
-
-        .close-modal {
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
-            font-size: 3rem;
-            color: white;
-            cursor: pointer;
-            z-index: 2001;
-            background: rgba(138, 43, 226, 0.3);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .close-modal:hover {
-            background: rgba(138, 43, 226, 0.6);
-            transform: rotate(90deg);
-        }
-
-        .detail-hero {
-            text-align: center;
-            padding: 3rem 0;
-            margin-bottom: 3rem;
-            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
-        }
-
-        .detail-hero h2 {
-            font-size: 3rem;
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .detail-hero .tagline {
-            font-size: 1.3rem;
-            color: #8a2be2;
-            margin-bottom: 2rem;
-        }
-
-        .detail-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .detail-feature {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(138, 43, 226, 0.2);
-        }
-
-        .detail-feature h4 {
-            color: #8a2be2;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .detail-feature p {
-            color: #b0b0b0;
-            line-height: 1.6;
-        }
-
-        .detail-section {
-            margin-bottom: 3rem;
-        }
-
-        .detail-section h3 {
-            color: white;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid rgba(138, 43, 226, 0.3);
-        }
-
-        .detail-section ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .detail-section li {
-            color: #b0b0b0;
-            padding: 0.8rem 0;
-            padding-left: 2rem;
-            position: relative;
-        }
-
-        .detail-section li::before {
-            content: '✓';
-            color: #8a2be2;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-
-        .cta-section {
-            text-align: center;
-            padding: 3rem;
-            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(65, 105, 225, 0.1));
-            border-radius: 20px;
-            margin-top: 3rem;
-        }
-
-        .cta-section .btn {
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        /* Footer */
         footer {
             background: rgba(10, 10, 10, 0.95);
             padding: 3rem 2rem;
@@ -406,66 +171,17 @@
             border-top: 1px solid rgba(138, 43, 226, 0.3);
         }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .social-links a {
-            color: #8a2be2;
-            text-decoration: none;
-            font-size: 1.5rem;
-            transition: transform 0.3s;
-        }
-
-        .social-links a:hover {
-            transform: scale(1.2);
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .subtitle {
-                font-size: 1.2rem;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .detail-hero h2 {
-                font-size: 2rem;
-            }
-
-            .modal-content {
-                padding: 1rem;
-            }
-
-            .close-modal {
-                top: 1rem;
-                right: 1rem;
-            }
+            h1 { font-size: 2.5rem; }
+            .products-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo" onclick="scrollToTop()">XenoForge</div>
+            <div class="logo">XenoForge</div>
             <ul class="nav-links">
                 <li><a href="#products">Products</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -474,432 +190,72 @@
     </header>
 
     <section class="hero">
-        <div class="hero-content">
-            <h1>XenoForge</h1>
-            <p class="subtitle">Professional Unity Editor Tools for Modern Developers</p>
-        </div>
+        <h1>XenoForge</h1>
+        <p class="subtitle">Professional Unity Editor Tools for Modern Developers</p>
     </section>
 
     <section class="products" id="products">
         <h2 class="section-title">Our Products</h2>
-        <div class="products-grid">
-            <!-- Smart Search Product Card -->
-            <div class="product-card" onclick="openProductDetail('smartsearch')">
-                <span class="product-icon">🔍</span>
-                <h3>Smart Search</h3>
-                <p class="tagline">Advanced Hierarchy Filtering for Unity</p>
-                <p>Transform Unity's basic hierarchy search into a powerful filtering system with visual query builder, logical operators, and instant results.</p>
-                <div class="product-badges">
-                    <span class="badge">Editor Tool</span>
-                    <span class="badge">Productivity</span>
-                    <span class="badge">Unity 2020.3+</span>
-                </div>
-                <button class="btn btn-primary">View Details</button>
-            </div>
-
-            <!-- RefSight Product Card -->
-            <div class="product-card" onclick="openProductDetail('refsight')">
-                <span class="product-icon">🔧</span>
-                <h3>RefSight</h3>
-                <p class="tagline">Detect and fix missing references automatically</p>
-                <p>Automatically scan your scenes, detect broken references, and fix them with smart suggestions. Save hours of debugging time.</p>
-                <div class="product-badges">
-                    <span class="badge">Editor Tool</span>
-                    <span class="badge">Debugging</span>
-                    <span class="badge">Unity 2020.3+</span>
-                </div>
-                <button class="btn btn-primary">View Details</button>
-            </div>
-
-            <!-- Placeholder for future products -->
-            <div class="product-card" style="opacity: 0.5; cursor: not-allowed;">
-                <span class="product-icon">🎮</span>
-                <h3>Coming Soon</h3>
-                <p class="tagline">More amazing tools on the way</p>
-                <p>We're working on exciting new tools to boost your Unity development workflow. Stay tuned!</p>
-                <div class="product-badges">
-                    <span class="badge">Coming Soon</span>
-                </div>
-            </div>
-        </div>
+        <div class="products-grid" id="products-container"></div>
     </section>
 
-    <!-- Smart Search Detail Modal -->
-    <div id="smartsearch-modal" class="modal">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
-        <div class="modal-content">
-            <div class="detail-hero">
-                <h2>Smart Search</h2>
-                <p class="tagline">Advanced Hierarchy Filtering for Unity</p>
-                <div class="product-badges" style="justify-content: center; margin-bottom: 2rem;">
-                    <span class="badge">Editor Tool</span>
-                    <span class="badge">Productivity</span>
-                    <span class="badge">Unity 2020.3+</span>
-                    <span class="badge">Full Source Code</span>
-                </div>
-            </div>
-
-            <div class="detail-section">
-                <h3>Why Smart Search?</h3>
-                <p style="color: #b0b0b0; line-height: 1.8; font-size: 1.1rem;">
-                    Working on a scene with hundreds of GameObjects? Need to find all enemies with Rigidbody on a specific layer? Want to batch-edit objects with certain component values?
-                    <br><br>
-                    <strong style="color: white;">Unity's built-in search falls short.</strong> Smart Search fills the gap with powerful filtering options, logical operators, and preset management.
-                </p>
-            </div>
-
-            <div class="detail-features">
-                <div class="detail-feature">
-                    <h4>🎯 Visual Query Builder</h4>
-                    <p>Build complex searches without typing a single query string. Dropdown selection for all filter types with auto-complete and real-time feedback.</p>
-                </div>
-
-                <div class="detail-feature">
-                    <h4>⚡ Component Field Filtering</h4>
-                    <p>Search by component property values (health > 50, speed <= 10). Works with Int, Float, Bool, and String fields with all comparison operators.</p>
-                </div>
-
-                <div class="detail-feature">
-                    <h4>🔗 Logical Operators</h4>
-                    <p>Combine filters with AND, OR, NOT to create complex queries. Find exactly what you need with precision.</p>
-                </div>
-
-                <div class="detail-feature">
-                    <h4>💾 Preset System</h4>
-                    <p>Save frequently used searches as reusable presets. One-click application from preset library. Perfect for team workflows.</p>
-                </div>
-
-                <div class="detail-feature">
-                    <h4>🎨 Multiple Result Actions</h4>
-                    <p>Select All, Select Inverse, Highlight in hierarchy, or Filter View - choose the best action for your workflow.</p>
-                </div>
-
-                <div class="detail-feature">
-                    <h4>🚀 High Performance</h4>
-                    <p>Searches 1000+ objects in milliseconds. Non-blocking UI with zero performance impact in builds.</p>
-                </div>
-            </div>
-
-            <div class="detail-section">
-                <h3>Key Features</h3>
-                <ul>
-                    <li>Visual query builder with dropdown filters</li>
-                    <li>6 filter types: Name, Tag, Layer, Component, Static, Active</li>
-                    <li>Component field value filtering with 6 comparison operators</li>
-                    <li>Logical operators (AND, OR, NOT)</li>
-                    <li>4 result actions (Select All, Select Inverse, Highlight, Filter View)</li>
-                    <li>Preset system with ScriptableObject storage</li>
-                    <li>Context menu integration</li>
-                    <li>Keyboard shortcuts (Ctrl+H)</li>
-                    <li>Auto-complete component search</li>
-                    <li>Live field dropdown for components</li>
-                    <li>Full source code included</li>
-                    <li>Comprehensive documentation</li>
-                </ul>
-            </div>
-
-            <div class="detail-section">
-                <h3>Use Cases</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
-                    <div>
-                        <h4 style="color: #8a2be2; margin-bottom: 0.5rem;">Level Design</h4>
-                        <p style="color: #b0b0b0;">Find all trigger colliders, lights on specific layers, disabled spawn points</p>
-                    </div>
-                    <div>
-                        <h4 style="color: #8a2be2; margin-bottom: 0.5rem;">Debugging</h4>
-                        <p style="color: #b0b0b0;">Locate inactive objects, find objects with specific component states</p>
-                    </div>
-                    <div>
-                        <h4 style="color: #8a2be2; margin-bottom: 0.5rem;">Optimization</h4>
-                        <p style="color: #b0b0b0;">Find all rigidbodies, heavy renderers, batch process objects</p>
-                    </div>
-                    <div>
-                        <h4 style="color: #8a2be2; margin-bottom: 0.5rem;">Cleanup</h4>
-                        <p style="color: #b0b0b0;">Find unnamed objects, untagged objects, test objects for deletion</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="detail-section">
-                <h3>What's Included</h3>
-                <ul>
-                    <li>Complete source code (C#)</li>
-                    <li>Editor window with visual query builder</li>
-                    <li>Hierarchy highlighting system</li>
-                    <li>Filter view system with HideFlags</li>
-                    <li>Preset management system</li>
-                    <li>Context menu integration</li>
-                    <li>Comprehensive documentation (README + Asset Store Description)</li>
-                    <li>Example presets</li>
-                    <li>Full support</li>
-                </ul>
-            </div>
-
-            <div class="detail-section">
-                <h3>Technical Requirements</h3>
-                <ul>
-                    <li>Unity Version: 2020.3 or higher</li>
-                    <li>Platform: Editor only (no runtime components)</li>
-                    <li>Dependencies: None - pure C# Unity Editor API</li>
-                    <li>Integration: Zero setup, works immediately after import</li>
-                    <li>Compatible with Mono and IL2CPP</li>
-                </ul>
-            </div>
-
-            <div class="cta-section">
-                <h3 style="color: white; margin-bottom: 1rem;">Ready to supercharge your Unity workflow?</h3>
-                <p style="color: #b0b0b0; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                    One-time purchase. Unlimited projects. Lifetime updates.
-                </p>
-                <a href="https://assetstore.unity.com/packages/slug/338596" target="_blank" class="btn btn-primary">Get it on Unity Asset Store</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- RefSight Detail Modal -->
-    <div id="refsight-modal" class="modal">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
-        <div class="modal-content">
-            <div class="detail-hero">
-                <h2>RefSight</h2>
-                <p class="tagline">Detect and fix missing references automatically</p>
-                <div class="product-badges" style="justify-content: center; margin-bottom: 2rem;">
-                    <span class="badge">Editor Tool</span>
-                    <span class="badge">Debugging</span>
-                    <span class="badge">Unity 2020.3+</span>
-                    <span class="badge">Full Source Code</span>
-                </div>
-            </div>
-
-            <div class="detail-section">
-                <h3>What It Does</h3>
-                <p style="color: #b0b0b0; line-height: 1.8; font-size: 1.1rem;">
-                    RefSight automatically scans your Unity scenes and prefabs to detect broken references. See issues directly in the hierarchy with visual indicators, get smart fix suggestions with confidence scores, and resolve problems with a single click.
-                </p>
-            </div>
-
-            <div class="detail-features">
-                <div class="detail-feature">
-                    <h4>🔍 Automatic Detection</h4>
-                    <p>Real-time scanning with visual indicators in hierarchy. Works seamlessly with scenes and prefabs.</p>
-                </div>
-
-                <div class="detail-feature">
-                    <h4>🔧 Smart Fix Suggestions</h4>
-                    <p>AI-powered suggestions with confidence scores (60-90%). Finds components on same object, parents, or children automatically.</p>
-                </div>
-
-                <div class="detail-feature">
-                    <h4>🕵️ Missing Script Detective</h4>
-                    <p>Shows deleted script details including original name, file path, and GUID for easy tracking.</p>
-                </div>
-
-                <div class="detail-feature">
-                    <h4>🔎 Smart Search</h4>
-                    <p>Filter issues quickly: missing:Sprite, component:AudioSource, or severity:critical.</p>
-                </div>
-
-                <div class="detail-feature">
-                    <h4>📦 Batch Operations</h4>
-                    <p>Fix multiple objects at once. Select all matching issues and apply fixes in bulk.</p>
-                </div>
-
-                <div class="detail-feature">
-                    <h4>⚡ High Performance</h4>
-                    <p>Scans 1,000 objects in under 1 second with minimal memory footprint. No dependencies required.</p>
-                </div>
-            </div>
-
-            <div class="detail-section">
-                <h3>How It Works</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
-                    <div style="text-align: center;">
-                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">1️⃣</div>
-                        <h4 style="color: #8a2be2; margin-bottom: 0.5rem;">Open Scene</h4>
-                        <p style="color: #b0b0b0; font-size: 0.95rem;">Auto-starts scanning</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">2️⃣</div>
-                        <h4 style="color: #8a2be2; margin-bottom: 0.5rem;">See Problems</h4>
-                        <p style="color: #b0b0b0; font-size: 0.95rem;">⚠️ icons appear in hierarchy</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">3️⃣</div>
-                        <h4 style="color: #8a2be2; margin-bottom: 0.5rem;">Click Fix</h4>
-                        <p style="color: #b0b0b0; font-size: 0.95rem;">Review smart suggestions</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">4️⃣</div>
-                        <h4 style="color: #8a2be2; margin-bottom: 0.5rem;">Apply</h4>
-                        <p style="color: #b0b0b0; font-size: 0.95rem;">One-click with undo support</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="detail-section">
-                <h3>Key Features</h3>
-                <ul>
-                    <li>Real-time automatic detection of missing references</li>
-                    <li>Visual hierarchy integration with warning icons</li>
-                    <li>Smart fix suggestions with confidence scores</li>
-                    <li>Missing script detective with GUID tracking</li>
-                    <li>Advanced search filters (missing:, component:, severity:)</li>
-                    <li>Batch operations for multiple objects</li>
-                    <li>Export reports in Markdown, Plain Text, and CSV</li>
-                    <li>Context menu integration</li>
-                    <li>Customizable settings panel</li>
-                    <li>Full undo support</li>
-                    <li>Comprehensive documentation</li>
-                </ul>
-            </div>
-
-            <div class="detail-section">
-                <h3>Report Formats</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
-                    <div>
-                        <h4 style="color: #8a2be2; margin-bottom: 0.5rem;">📄 Markdown</h4>
-                        <p style="color: #b0b0b0;">Perfect for documentation and GitHub issues</p>
-                    </div>
-                    <div>
-                        <h4 style="color: #8a2be2; margin-bottom: 0.5rem;">📝 Plain Text</h4>
-                        <p style="color: #b0b0b0;">Simple format for logs and quick review</p>
-                    </div>
-                    <div>
-                        <h4 style="color: #8a2be2; margin-bottom: 0.5rem;">📊 CSV</h4>
-                        <p style="color: #b0b0b0;">Import to spreadsheets for analysis</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="detail-section">
-                <h3>What's Included</h3>
-                <ul>
-                    <li>Complete detection engine with real-time scanning</li>
-                    <li>Smart fix suggestion system</li>
-                    <li>Missing script detective tool</li>
-                    <li>Batch operation support</li>
-                    <li>Advanced search and filtering</li>
-                    <li>Report generator (3 formats)</li>
-                    <li>Hierarchy visual integration</li>
-                    <li>Context menu extensions</li>
-                    <li>Full source code</li>
-                    <li>Comprehensive documentation</li>
-                </ul>
-            </div>
-
-            <div class="detail-section">
-                <h3>Technical Details</h3>
-                <ul>
-                    <li>Unity Version: 2020.3 or higher</li>
-                    <li>Platform: Editor only</li>
-                    <li>Performance: 1,000 objects scanned in <1 second</li>
-                    <li>Memory: <10MB footprint</li>
-                    <li>Dependencies: None</li>
-                    <li>Integration: Zero setup required</li>
-                </ul>
-            </div>
-
-            <div class="cta-section">
-                <h3 style="color: white; margin-bottom: 1rem;">Stop wasting time hunting for broken references</h3>
-                <p style="color: #b0b0b0; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                    One-time purchase. Unlimited projects. Lifetime updates.
-                </p>
-                <a href="https://assetstore.unity.com/packages/slug/337902" target="_blank" class="btn btn-primary">Get it on Unity Asset Store</a>
-            </div>
-        </div>
-    </div>
-
     <footer id="contact">
-        <div class="footer-content">
-            <div class="logo" style="font-size: 2rem; margin-bottom: 1rem;">XenoForge</div>
-            <p style="color: #b0b0b0; margin-bottom: 1rem;">Professional Unity Editor Tools</p>
-            <div class="social-links">
-                <a href="mailto:contact.xenoforge@gmail.com" title="Email">📧 contact.xenoforge@gmail.com</a>
-            </div>
-            <p style="color: #808080; margin-top: 2rem; font-size: 0.9rem;">
-                © 2024 XenoForge. All rights reserved.
-            </p>
-        </div>
+        <div class="logo" style="font-size: 2rem; margin-bottom: 1rem;">XenoForge</div>
+        <p style="color: #b0b0b0; margin-bottom: 1rem;">Professional Unity Editor Tools</p>
+        <a href="mailto:contact.xenoforge@gmail.com" style="color: #8a2be2; text-decoration: none;">📧 contact.xenoforge@gmail.com</a>
+        <p style="color: #808080; margin-top: 2rem;">© 2024 XenoForge. All rights reserved.</p>
     </footer>
 
     <script>
-        function openProductDetail(productId) {
-            const modal = document.getElementById(productId + '-modal');
-            if (modal) {
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
+        const products = [
+            {
+                name: 'Smart Search',
+                icon: '🔍',
+                tagline: 'Advanced Hierarchy Filtering for Unity',
+                description: 'Transform Unity\'s basic hierarchy search into a powerful filtering system.',
+                badges: ['Editor Tool', 'Productivity'],
+                url: 'https://assetstore.unity.com/packages/slug/338596'
+            },
+            {
+                name: 'RefSight',
+                icon: '🔧',
+                tagline: 'Detect and fix missing references automatically',
+                description: 'Automatically scan your scenes and fix broken references with smart suggestions.',
+                badges: ['Editor Tool', 'Debugging'],
+                url: 'https://assetstore.unity.com/packages/slug/337902'
             }
-        }
+        ];
 
-        function closeModal() {
-            const modals = document.querySelectorAll('.modal');
-            modals.forEach(modal => {
-                modal.classList.remove('active');
-            });
-            document.body.style.overflow = 'auto';
-        }
-
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        // Close modal with ESC key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
+        const container = document.getElementById('products-container');
+        
+        products.forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <span class="product-icon">${product.icon}</span>
+                <h3>${product.name}</h3>
+                <p class="tagline">${product.tagline}</p>
+                <p style="color: #b0b0b0; margin-bottom: 1rem;">${product.description}</p>
+                ${product.badges.map(b => `<span class="badge">${b}</span>`).join('')}
+                <a href="${product.url}" target="_blank" style="text-decoration: none;">
+                    <button class="btn">View on Asset Store</button>
+                </a>
+            `;
+            container.appendChild(card);
         });
 
-        // Close modal when clicking outside content
-        document.querySelectorAll('.modal').forEach(modal => {
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    closeModal();
-                }
-            });
-        });
-
-        // Smooth scroll for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Animation for product cards
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '0';
-                    entry.target.style.transform = 'translateY(20px)';
-                    setTimeout(() => {
-                        entry.target.style.transition = 'all 0.6s ease-out';
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 100);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.product-card').forEach(card => {
-            observer.observe(card);
-        });
+        // Coming Soon card
+        const comingSoon = document.createElement('div');
+        comingSoon.className = 'product-card';
+        comingSoon.style.opacity = '0.5';
+        comingSoon.innerHTML = `
+            <span class="product-icon">🎮</span>
+            <h3>Coming Soon</h3>
+            <p class="tagline">More amazing tools on the way</p>
+            <p style="color: #b0b0b0;">We're working on exciting new tools!</p>
+            <span class="badge">Coming Soon</span>
+        `;
+        container.appendChild(comingSoon);
     </script>
 </body>
 </html>
