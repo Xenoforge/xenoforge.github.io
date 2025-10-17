@@ -207,25 +207,40 @@
     </footer>
 
     <script>
+        // ========================================
+        // ÜRÜN VERİLERİ - Buraya yeni ürün ekleyin
+        // ========================================
         const products = [
             {
                 name: 'Smart Search',
                 icon: '🔍',
                 tagline: 'Advanced Hierarchy Filtering for Unity',
-                description: 'Transform Unity\'s basic hierarchy search into a powerful filtering system.',
-                badges: ['Editor Tool', 'Productivity'],
+                description: 'Transform Unity\'s basic hierarchy search into a powerful filtering system with visual query builder, logical operators, and instant results.',
+                badges: ['Editor Tool', 'Productivity', 'Unity 2020.3+'],
                 url: 'https://assetstore.unity.com/packages/slug/338596'
             },
             {
                 name: 'RefSight',
                 icon: '🔧',
                 tagline: 'Detect and fix missing references automatically',
-                description: 'Automatically scan your scenes and fix broken references with smart suggestions.',
-                badges: ['Editor Tool', 'Debugging'],
+                description: 'Automatically scan your scenes, detect broken references, and fix them with smart suggestions. Save hours of debugging time.',
+                badges: ['Editor Tool', 'Debugging', 'Unity 2020.3+'],
                 url: 'https://assetstore.unity.com/packages/slug/337902'
             }
+            // Yeni ürün eklemek için buraya virgülle ayırarak yeni obje ekleyin:
+            // ,{
+            //     name: 'Yeni Ürün',
+            //     icon: '🎮',
+            //     tagline: 'Kısa slogan',
+            //     description: 'Detaylı açıklama...',
+            //     badges: ['Kategori1', 'Kategori2'],
+            //     url: 'https://assetstore.unity.com/packages/slug/XXXXX'
+            // }
         ];
 
+        // ========================================
+        // RENDER KODU - Dokunmayın
+        // ========================================
         const container = document.getElementById('products-container');
         
         products.forEach(product => {
