@@ -175,6 +175,12 @@
             background: rgba(0, 0, 0, 0.95);
             z-index: 2000;
             overflow-y: auto;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .modal.active {
@@ -182,50 +188,122 @@
         }
 
         .modal-content {
-            max-width: 900px;
-            margin: 3rem auto;
+            max-width: 1200px;
+            margin: 2rem auto;
             padding: 2rem;
-            background: rgba(26, 26, 46, 0.95);
-            border-radius: 20px;
-            border: 1px solid rgba(138, 43, 226, 0.3);
+            position: relative;
         }
 
         .close-modal {
-            float: right;
-            font-size: 2rem;
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            font-size: 3rem;
             color: white;
             cursor: pointer;
-            background: none;
+            z-index: 2001;
+            background: rgba(138, 43, 226, 0.3);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
             border: none;
-            width: auto;
-            margin: 0;
-            padding: 0;
         }
 
         .close-modal:hover {
-            color: #8a2be2;
+            background: rgba(138, 43, 226, 0.6);
+            transform: rotate(90deg);
         }
 
-        .modal h2 {
+        .detail-hero {
+            text-align: center;
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .detail-hero h2 {
+            font-size: 3rem;
             color: white;
-            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
 
-        .modal .tagline {
+        .detail-hero .tagline {
+            font-size: 1.3rem;
             color: #8a2be2;
-            font-size: 1.2rem;
             margin-bottom: 2rem;
         }
 
-        .modal-badges {
-            margin-bottom: 2rem;
+        .detail-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
         }
 
-        .modal p {
+        .detail-feature {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .detail-feature h4 {
+            color: #8a2be2;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .detail-feature p {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        .detail-section {
+            margin-bottom: 3rem;
+        }
+
+        .detail-section h3 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .detail-section p {
             color: #b0b0b0;
             line-height: 1.8;
-            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(65, 105, 225, 0.1));
+            border-radius: 20px;
+            margin-top: 3rem;
+        }
+
+        .cta-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section .btn {
+            max-width: 400px;
+            margin: 0 auto;
         }
 
         footer {
@@ -265,8 +343,8 @@
 
     <!-- Modal container -->
     <div id="modal" class="modal">
+        <button class="close-modal" onclick="closeModal()">&times;</button>
         <div class="modal-content">
-            <button class="close-modal" onclick="closeModal()">&times;</button>
             <div id="modal-body"></div>
         </div>
     </div>
@@ -289,9 +367,23 @@
                 icon: '🔍',
                 tagline: 'Advanced Hierarchy Filtering for Unity',
                 description: 'Transform Unity\'s basic hierarchy search into a powerful filtering system with visual query builder, logical operators, and instant results.',
-                longDescription: 'Working on a scene with hundreds of GameObjects? Need to find all enemies with Rigidbody on a specific layer? Unity\'s built-in search falls short. Smart Search fills the gap with powerful filtering options, logical operators, and preset management.',
                 badges: ['Editor Tool', 'Productivity', 'Unity 2020.3+'],
-                url: 'https://assetstore.unity.com/packages/slug/338596'
+                url: 'https://assetstore.unity.com/packages/slug/338596',
+                details: {
+                    intro: 'Working on a scene with hundreds of GameObjects? Need to find all enemies with Rigidbody on a specific layer? Want to batch-edit objects with certain component values? <strong style="color: white;">Unity\'s built-in search falls short.</strong> Smart Search fills the gap with powerful filtering options, logical operators, and preset management.',
+                    features: [
+                        { icon: '🎯', title: 'Visual Query Builder', desc: 'Build complex searches without typing. Dropdown selection with auto-complete and real-time feedback.' },
+                        { icon: '⚡', title: 'Component Field Filtering', desc: 'Search by component property values (health > 50). Works with all comparison operators.' },
+                        { icon: '🔗', title: 'Logical Operators', desc: 'Combine filters with AND, OR, NOT. Find exactly what you need.' },
+                        { icon: '💾', title: 'Preset System', desc: 'Save searches as reusable presets. One-click application.' },
+                        { icon: '🎨', title: 'Multiple Result Actions', desc: 'Select All, Highlight, or Filter View - choose the best action.' },
+                        { icon: '🚀', title: 'High Performance', desc: 'Searches 1000+ objects in milliseconds. Zero performance impact.' }
+                    ],
+                    cta: {
+                        title: 'Ready to supercharge your Unity workflow?',
+                        subtitle: 'One-time purchase. Unlimited projects. Lifetime updates.'
+                    }
+                }
             },
             {
                 id: 'refsight',
@@ -299,9 +391,23 @@
                 icon: '🔧',
                 tagline: 'Detect and fix missing references automatically',
                 description: 'Automatically scan your scenes, detect broken references, and fix them with smart suggestions. Save hours of debugging time.',
-                longDescription: 'RefSight automatically scans your Unity scenes and prefabs to detect broken references. See issues directly in the hierarchy with visual indicators, get smart fix suggestions with confidence scores, and resolve problems with a single click.',
                 badges: ['Editor Tool', 'Debugging', 'Unity 2020.3+'],
-                url: 'https://assetstore.unity.com/packages/slug/337902'
+                url: 'https://assetstore.unity.com/packages/slug/337902',
+                details: {
+                    intro: 'RefSight automatically scans your Unity scenes and prefabs to detect broken references. See issues directly in the hierarchy with visual indicators, get smart fix suggestions with confidence scores, and resolve problems with a single click.',
+                    features: [
+                        { icon: '🔍', title: 'Automatic Detection', desc: 'Real-time scanning with visual indicators. Works with scenes and prefabs.' },
+                        { icon: '🔧', title: 'Smart Fix Suggestions', desc: 'AI-powered suggestions with 60-90% confidence scores.' },
+                        { icon: '🕵️', title: 'Missing Script Detective', desc: 'Shows deleted script details with GUID tracking.' },
+                        { icon: '🔎', title: 'Smart Search', desc: 'Filter issues: missing:Sprite, component:AudioSource, severity:critical.' },
+                        { icon: '📦', title: 'Batch Operations', desc: 'Fix multiple objects at once. Apply fixes in bulk.' },
+                        { icon: '⚡', title: 'High Performance', desc: 'Scans 1,000 objects in under 1 second. Minimal memory footprint.' }
+                    ],
+                    cta: {
+                        title: 'Stop wasting time hunting for broken references',
+                        subtitle: 'One-time purchase. Unlimited projects. Lifetime updates.'
+                    }
+                }
             }
             // Yeni ürün eklemek için buraya virgülle ayırarak yeni obje ekleyin:
             // ,{
@@ -353,16 +459,37 @@
             const modalBody = document.getElementById('modal-body');
             
             modalBody.innerHTML = `
-                <span class="product-icon">${product.icon}</span>
-                <h2>${product.name}</h2>
-                <p class="tagline">${product.tagline}</p>
-                <div class="modal-badges">
-                    ${product.badges.map(b => `<span class="badge">${b}</span>`).join('')}
+                <div class="detail-hero">
+                    <span class="product-icon">${product.icon}</span>
+                    <h2>${product.name}</h2>
+                    <p class="tagline">${product.tagline}</p>
+                    <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+                        ${product.badges.map(b => `<span class="badge">${b}</span>`).join('')}
+                        <span class="badge">Full Source Code</span>
+                    </div>
                 </div>
-                <p>${product.longDescription}</p>
-                <a href="${product.url}" target="_blank" style="text-decoration: none;">
-                    <button class="btn">Get it on Unity Asset Store</button>
-                </a>
+
+                <div class="detail-section">
+                    <h3>Overview</h3>
+                    <p>${product.details.intro}</p>
+                </div>
+
+                <div class="detail-features">
+                    ${product.details.features.map(f => `
+                        <div class="detail-feature">
+                            <h4>${f.icon} ${f.title}</h4>
+                            <p>${f.desc}</p>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="cta-section">
+                    <h3>${product.details.cta.title}</h3>
+                    <p>${product.details.cta.subtitle}</p>
+                    <a href="${product.url}" target="_blank" style="text-decoration: none;">
+                        <button class="btn">Get it on Unity Asset Store</button>
+                    </a>
+                </div>
             `;
             
             modal.classList.add('active');
